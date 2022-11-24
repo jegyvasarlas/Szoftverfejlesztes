@@ -2,4 +2,4 @@
 
 Szoftverfejlesztes elmelet 2022. 11. 24
 
-* 13. szobeli tetel
+* 13 . szobeli tetel
