@@ -53,7 +53,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(381, 6);
+            this.button2.Location = new System.Drawing.Point(460, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(123, 26);
             this.button2.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(381, 33);
+            this.button3.Location = new System.Drawing.Point(460, 33);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(123, 27);
             this.button3.TabIndex = 2;
@@ -87,14 +87,14 @@
             this.textBox1.Location = new System.Drawing.Point(219, 83);
             this.textBox1.MaxLength = 32;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 23);
+            this.textBox1.Size = new System.Drawing.Size(226, 23);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "foldrajz";
             this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(381, 83);
+            this.button1.Location = new System.Drawing.Point(460, 83);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 24);
             this.button1.TabIndex = 5;
@@ -117,7 +117,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(16, 333);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(696, 199);
+            this.listBox1.Size = new System.Drawing.Size(746, 199);
             this.listBox1.TabIndex = 12;
             // 
             // label3
@@ -144,7 +144,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.label5.Location = new System.Drawing.Point(203, 9);
+            this.label5.Location = new System.Drawing.Point(233, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 20);
             this.label5.TabIndex = 15;
@@ -154,7 +154,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.label6.Location = new System.Drawing.Point(203, 40);
+            this.label6.Location = new System.Drawing.Point(233, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 20);
             this.label6.TabIndex = 16;
@@ -166,17 +166,17 @@
             this.textBox2.Location = new System.Drawing.Point(71, 9);
             this.textBox2.MaxLength = 32;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(126, 23);
+            this.textBox2.Size = new System.Drawing.Size(156, 23);
             this.textBox2.TabIndex = 17;
             this.textBox2.Text = "localhost";
             // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox3.Location = new System.Drawing.Point(260, 9);
+            this.textBox3.Location = new System.Drawing.Point(290, 9);
             this.textBox3.MaxLength = 32;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(115, 23);
+            this.textBox3.Size = new System.Drawing.Size(155, 23);
             this.textBox3.TabIndex = 18;
             this.textBox3.Text = "root";
             // 
@@ -186,17 +186,17 @@
             this.textBox4.Location = new System.Drawing.Point(71, 44);
             this.textBox4.MaxLength = 32;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(126, 23);
+            this.textBox4.Size = new System.Drawing.Size(156, 23);
             this.textBox4.TabIndex = 19;
             this.textBox4.Text = "3306";
             // 
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox5.Location = new System.Drawing.Point(260, 38);
+            this.textBox5.Location = new System.Drawing.Point(290, 38);
             this.textBox5.MaxLength = 32;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(115, 23);
+            this.textBox5.Size = new System.Drawing.Size(155, 23);
             this.textBox5.TabIndex = 20;
             // 
             // label7
@@ -215,12 +215,12 @@
             this.textBox6.Location = new System.Drawing.Point(16, 558);
             this.textBox6.MaxLength = 32;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(533, 23);
+            this.textBox6.Size = new System.Drawing.Size(583, 23);
             this.textBox6.TabIndex = 22;
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(546, 558);
+            this.button7.Location = new System.Drawing.Point(596, 558);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(76, 23);
             this.button7.TabIndex = 23;
@@ -230,7 +230,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(618, 558);
+            this.button8.Location = new System.Drawing.Point(668, 558);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(94, 23);
             this.button8.TabIndex = 24;
@@ -241,7 +241,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FoldrajzGUI.Properties.Resources.mysql_5_logo_png_transparent;
-            this.pictureBox1.Location = new System.Drawing.Point(531, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(600, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(162, 113);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
