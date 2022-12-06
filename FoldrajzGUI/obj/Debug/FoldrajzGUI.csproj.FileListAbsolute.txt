@@ -44,3 +44,4 @@ C:\Users\admin\Documents\GitHub\Seban\FoldrajzGUI\bin\Debug\K4os.Compression.LZ4
 C:\Users\admin\Documents\GitHub\Seban\FoldrajzGUI\bin\Debug\K4os.Hash.xxHash.dll
 C:\Users\admin\Documents\GitHub\Seban\FoldrajzGUI\bin\Debug\MySql.Data.xml
 C:\Users\admin\Documents\GitHub\Seban\FoldrajzGUI\obj\Debug\FoldrajzGUI.csproj.CopyComplete
+C:\Users\admin\Documents\GitHub\Seban\FoldrajzGUI\bin\Debug\feladatok.txt

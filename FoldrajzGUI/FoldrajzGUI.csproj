@@ -84,5 +84,10 @@
   <ItemGroup>
     <None Include="Resources\mysql-5-logo-png-transparent.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="feladatok.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

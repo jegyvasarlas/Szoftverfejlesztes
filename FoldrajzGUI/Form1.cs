@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FoldrajzGUI
@@ -29,7 +24,7 @@ namespace FoldrajzGUI
             {
                 gombok[i] = new Button();
                 gombok[i].Location = new Point(i % wCount * 70, (i / wCount) * 25 + 150);
-                gombok[i].Name = "button" + (i + 1).ToString();
+                gombok[i].Name = (i + 1).ToString();
                 gombok[i].Size = new Size(70, 25);
                 gombok[i].Text = (i + 1) + ". feladat".ToString();
                 gombok[i].UseVisualStyleBackColor = true;
@@ -37,19 +32,49 @@ namespace FoldrajzGUI
                 gombok[i].Click += GombKattintas;
 
                 this.Controls.Add(gombok[i]);
+            }
 
+            foreach (var item in File.ReadAllLines("feladatok.txt"))
+            {
+                feladatok.Add(item);
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        public static List<string> feladatok = new List<string>();
 
         private void GombKattintas(object sender, EventArgs e)
         {
             Button b = sender as Button;
-            MessageBox.Show(b.Text + " gomb lett megnyomva");
+            try
+            {
+                string connStr = $"server={textBox2.Text};user={textBox3.Text};port={textBox4.Text};password={textBox5.Text}";
+                MySqlConnection conn = new MySqlConnection(connStr);
+                conn.Open();
+                string sql_useDatabase = $"use {textBox1.Text}";
+                MySqlCommand cmd_useDatabase = new MySqlCommand(sql_useDatabase, conn);
+                cmd_useDatabase.ExecuteNonQuery();
+                string sql_select = feladatok[int.Parse(b.Name)-1];
+                MySqlCommand cmd = new MySqlCommand(sql_select, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                listBox1.Items.Clear();
+                listBox1.Items.Add(b.Text);
+                listBox1.Items.Add("Ez a parancs futott le:");
+                listBox1.Items.Add(" ");
+                listBox1.Items.Add(sql_select);
+                listBox1.Items.Add(" ");
+                while (rdr.Read())
+                {
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+                        listBox1.Items.Add(rdr[i]);
+                    }
+                }             
+                rdr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hiba tortent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e) // letrehozas
@@ -92,7 +117,7 @@ namespace FoldrajzGUI
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("A feladat hibatlan megoldasa miatt a szovegdoboz jelenleg csak olvashato!", "Figyelmeztetes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("A feladat hibatlan megoldasa miatt a szovegdoboz jelenleg csak olvashato!", "Figyelmeztetes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void button1_Click(object sender, EventArgs e) // beillesztes
@@ -105,16 +130,8 @@ namespace FoldrajzGUI
                 string sql_useDatabase = $"use {textBox1.Text}";
                 MySqlCommand cmd_useDatabase = new MySqlCommand(sql_useDatabase, conn);
                 cmd_useDatabase.ExecuteNonQuery();
-
-                /*string sql_createTable = File.ReadAllText("adatbazis.sql");
-                MySqlCommand cmd_createTable = new MySqlCommand(sql_createTable, conn);
-                cmd_createTable.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Az adatfajl sikeresen beillesztesre kerult!", "Siker", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
-
                 string fileContent = string.Empty;
                 string filePath = string.Empty;
-
                 using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
                 {
                     openFileDialog1.InitialDirectory = "c:\\";
@@ -124,11 +141,8 @@ namespace FoldrajzGUI
 
                     if (openFileDialog1.ShowDialog() == DialogResult.OK)
                     {
-                        //Get the path of specified file
                         filePath = openFileDialog1.FileName;
-                        //Read the contents of the file into a stream
                         var fileStream = openFileDialog1.OpenFile();
-
                         using (StreamReader reader1 = new StreamReader(fileStream))
                         {
                             fileContent = reader1.ReadToEnd();
@@ -140,35 +154,6 @@ namespace FoldrajzGUI
                         conn.Close();
                     }
                 }
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Hiba tortent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e) // 3. feladat
-        {
-            try
-            {
-                string connStr = $"server={textBox2.Text};user={textBox3.Text};port={textBox4.Text};password={textBox5.Text}";
-                MySqlConnection conn = new MySqlConnection(connStr);
-                conn.Open();
-                string sql_useDatabase = $"use {textBox1.Text}";
-                MySqlCommand cmd_useDatabase = new MySqlCommand(sql_useDatabase, conn);
-                cmd_useDatabase.ExecuteNonQuery();
-                string sql_select = "";
-                MySqlCommand cmd = new MySqlCommand(sql_select, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                listBox1.Items.Clear();
-                listBox1.Items.Add($"nev, kerulet");
-                while (rdr.Read())
-                {
-                    listBox1.Items.Add($"{rdr[0]}, {rdr[1]}");
-                }
-                rdr.Close();
             }
             catch (Exception ex)
             {
@@ -219,62 +204,5 @@ namespace FoldrajzGUI
         {
             listBox1.Items.Clear();
         }
-
-        /*
-        SEGITSEG A FELADATOK MEGOLDASAHOZ
-        ============================================================================================================================
-        private void button10_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string connStr = $"server={textBox2.Text};user={textBox3.Text};port={textBox4.Text};password={textBox5.Text}";
-                MySqlConnection conn = new MySqlConnection(connStr);
-                conn.Open();
-                string sql_useDatabase = $"use {textBox1.Text}";
-                MySqlCommand cmd_useDatabase = new MySqlCommand(sql_useDatabase, conn);
-                cmd_useDatabase.ExecuteNonQuery();
-                string sql_insert = "update diakok set kpmagy = 43 where oktazon = 0143302;";
-                MySqlCommand cmd = new MySqlCommand(sql_insert, conn);
-                cmd.ExecuteNonQuery();
-                listBox1.Items.Clear();
-                listBox1.Items.Add("Ez a parancs futott le:");
-                listBox1.Items.Add(" ");
-                listBox1.Items.Add(sql_insert);
-                MessageBox.Show("A feladat sikeresen lefutott!", "Siker", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Hiba tortent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        ============================================================================================================================
-        private void button5_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string connStr = $"server={textBox2.Text};user={textBox3.Text};port={textBox4.Text};password={textBox5.Text}";
-                MySqlConnection conn = new MySqlConnection(connStr);
-                conn.Open();
-                string sql_useDatabase = $"use {textBox1.Text}";
-                MySqlCommand cmd_useDatabase = new MySqlCommand(sql_useDatabase, conn);
-                cmd_useDatabase.ExecuteNonQuery();
-                string sql_select = "";
-                MySqlCommand cmd = new MySqlCommand(sql_select, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                listBox1.Items.Clear();
-                listBox1.Items.Add($"nev, kerulet");
-                while (rdr.Read())
-                {
-                    listBox1.Items.Add($"{rdr[0]}, {rdr[1]}");
-                }
-                rdr.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Hiba tortent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        ============================================================================================================================
-        */
     }
 }

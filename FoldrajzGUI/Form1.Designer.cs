@@ -87,6 +87,7 @@
             this.textBox1.Location = new System.Drawing.Point(219, 83);
             this.textBox1.MaxLength = 32;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(226, 23);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "foldrajz";
@@ -118,7 +119,7 @@
             this.listBox1.Location = new System.Drawing.Point(16, 333);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(746, 199);
-            this.listBox1.TabIndex = 12;
+            this.listBox1.TabIndex = 13;
             // 
             // label3
             // 
@@ -278,7 +279,6 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Adatbazis kezelo program";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
