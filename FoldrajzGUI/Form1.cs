@@ -3,32 +3,53 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using MySql.Data.MySqlClient;
-using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
 
 namespace FoldrajzGUI
 {
     public partial class Form1 : Form
     {
+        Button[] gombok;
         public Form1()
         {
             InitializeComponent();
+
+            int width = this.ClientSize.Width;
+            int height = this.ClientSize.Height;
+            int wCount = width / 70;
+
+            gombok = new Button[65];
+
+            for (int i = 0; i < gombok.Length; i++)
+            {
+                gombok[i] = new Button();
+                gombok[i].Location = new Point(i % wCount * 70, (i / wCount) * 25 + 150);
+                gombok[i].Name = "button" + (i + 1).ToString();
+                gombok[i].Size = new Size(70, 25);
+                gombok[i].Text = (i + 1) + ". feladat".ToString();
+                gombok[i].UseVisualStyleBackColor = true;
+
+                gombok[i].Click += GombKattintas;
+
+                this.Controls.Add(gombok[i]);
+
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void GombKattintas(object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+            MessageBox.Show(b.Text + " gomb lett megnyomva");
         }
 
         private void button2_Click(object sender, EventArgs e) // letrehozas
@@ -72,8 +93,6 @@ namespace FoldrajzGUI
         private void textBox1_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("A feladat hibatlan megoldasa miatt a szovegdoboz jelenleg csak olvashato!", "Figyelmeztetes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            // Mostantol irhato is
         }
 
         private void button1_Click(object sender, EventArgs e) // beillesztes
@@ -157,26 +176,6 @@ namespace FoldrajzGUI
             }
         }
 
-        private void button5_Click(object sender, EventArgs e) // 4. feladat
-        {
-            
-        }
-
-        private void button6_Click(object sender, EventArgs e) // 5. feladat
-        {
-            
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button7_Click(object sender, EventArgs e) // Custom Command
         {
             try
@@ -219,16 +218,6 @@ namespace FoldrajzGUI
         private void button8_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            
         }
 
         /*
